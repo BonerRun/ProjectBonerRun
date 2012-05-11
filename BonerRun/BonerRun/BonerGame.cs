@@ -1,20 +1,40 @@
-using System;
-using System.Collections.Generic;
-using System.Linq;
+//________________#_________________________________
+//________##______#################____####_________
+//_________##___########_______##########___________
+//__________######__________________#####_____##____
+//__________###________________________####_####____
+//________###____________________________####_______
+//_______###_______________________________###______
+//______##___________________________________##_____
+//_____##_____#############____#############__##____
+//____##______#############____##############_###___
+//____##_______________________________________##___
+//___##_________________________________________##__
+//___##_____________________###_________________##__
+//___##_____________________###_________________##__
+//___##_____________________###_________________##__
+//___##_____________________###_________________##__
+//___##_____________________###_________________##__
+//___##________________________________________##___
+//____##_____________##############____________##___
+//____###______#########################______##____
+//_____###_____###___________________####____###____
+//______###____##########################___###_____
+//_______###________################_______###______
+//_________###___________________________###________
+//__________####______________________#####_________
+//____________######_______________######___________
+//_______________#####################______________
+//____________________###########___________________
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Audio;
-using Microsoft.Xna.Framework.Content;
-using Microsoft.Xna.Framework.GamerServices;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
-using Microsoft.Xna.Framework.Media;
 using BonerRun.Core;
 namespace BonerRun
 {
     public class BonerGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-        SpriteBatch spriteBatch;
 
         GameManager gameManager;
 
@@ -40,12 +60,8 @@ namespace BonerRun
 
         protected override void LoadContent()
         {
-            // Create a new SpriteBatch, which can be used to draw textures.
-            spriteBatch = new SpriteBatch(GraphicsDevice);
-
             gameManager = new GameManager(this);
             gameManager.Initialize();
-
         }
 
         protected override void UnloadContent()
@@ -53,10 +69,8 @@ namespace BonerRun
 
         }
 
-
         protected override void Update(GameTime gameTime)
         {
-            // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 

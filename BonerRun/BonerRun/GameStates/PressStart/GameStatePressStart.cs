@@ -20,15 +20,11 @@ namespace BonerRun.GameStates.PressStart
 
         public override void Initialize()
         {
-
             RenderGroup group = new RenderGroup("PressStart");
             parentManager.renderCore.renderGroups.Add(group);
 
-            background = new RenderImage(parentManager.renderCore, parentManager.game.Content.Load<Texture2D>("Graphic/PressStartScreen/BG"), group, 1, false, new Vector2(500, 500));
-
-
+            background = new RenderImage(parentManager.renderCore, parentManager.game.Content.Load<Texture2D>("Graphic/PressStartScreen/BG"), group, 0,false, Vector2.Zero);
             pressStart = new RenderImage(parentManager.renderCore, parentManager.game.Content.Load<Texture2D>("Graphic/PressStartScreen/Message"), group, 1, false, new Vector2(500, 500));
-
 
             parentManager.renderCore.objects.Add(background);
             parentManager.renderCore.objects.Add(pressStart);
@@ -50,7 +46,10 @@ namespace BonerRun.GameStates.PressStart
 
         public override void Destroy()
         {
-            
+            parentManager.renderCore.objects.Remove(background);
+            parentManager.renderCore.objects.Remove(pressStart);
+
+            parentManager.renderCore.renderGroups.Remove(parentManager.renderCore.getRenderGroup("PressStart"));           
         }
     }
 }

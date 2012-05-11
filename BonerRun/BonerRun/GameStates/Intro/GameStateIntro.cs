@@ -23,11 +23,9 @@ namespace BonerRun.GameStates.Intro
 
         public override void Initialize()
         {
-            video = parentManager.game.Content.Load<Video>("Videos/Intro");
+            video = parentManager.game.Content.Load<Video>("Video/intro");
             player = new VideoPlayer();
         }
-
-
 
         public override void Update()
         {

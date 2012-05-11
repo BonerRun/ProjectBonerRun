@@ -3,9 +3,13 @@ using System.Collections.Generic;
 using System.Text;
 using System.IO;
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using MoshiRendering.Core;
 using BonerRun.Input;
 using BonerRun.GameStates.Intro;
+using BonerRun.GameStates.PressStart;
+using BonerRun.GameStates.OnTheRun;
+using BonerRun.Content;
 namespace BonerRun.Core
 {
 	public sealed class GameManager
@@ -55,12 +59,18 @@ namespace BonerRun.Core
 
 		public void Initialize()
 		{
+            FileLoader.LoadDataTypes();
+            FileLoader.contentManager = game.Content;
+
             renderCore = new RenderingCore(game.GraphicsDevice, game.Content);
             inputManager = new InputManager("Keyboard");
 
+            renderCore.settings.standardsize = new Vector2(1280, 1024);
+            renderCore.settings.standardFont = game.Content.Load<SpriteFont>("Fonts/standardFont");
 
             gameStates = new List<GameState>();
-            gameStates.Add(new GameStateIntro(this));
+            //setGameState(new GameStatePressStart(this),true,false);
+            setGameState(new GameStateOnTheRun(this), true, false);
 		}
 
 		public void Update()
