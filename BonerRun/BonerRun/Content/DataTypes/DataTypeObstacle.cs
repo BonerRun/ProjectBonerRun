@@ -21,6 +21,7 @@ namespace BonerRun.Content.DataTypes
 
             obstacle.position = new Vector2(int.Parse(args[0].Split('/')[0]), int.Parse(args[0].Split('/')[1]));
             obstacle.spriteSheet = FileLoader.contentManager.Load<Texture2D>("Graphic/Obstacles/" + args[1]);
+            obstacle.camAffected = true;
 
             obstacle.animations = new List<MoshiRendering.Animation.IAnimation>();
             obstacle.animations.Add(new Animation(obstacle,1,new Vector2(obstacle.spriteSheet.Width,obstacle.spriteSheet.Height),false,Vector2.Zero,1));

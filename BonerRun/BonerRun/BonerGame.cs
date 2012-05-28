@@ -1,42 +1,13 @@
-//________________#_________________________________
-//________##______#################____####_________
-//_________##___########_______##########___________
-//__________######__________________#####_____##____
-//__________###________________________####_####____
-//________###____________________________####_______
-//_______###_______________________________###______
-//______##___________________________________##_____
-//_____##_____#############____#############__##____
-//____##______#############____##############_###___
-//____##_______________________________________##___
-//___##_________________________________________##__
-//___##_____________________###_________________##__
-//___##_____________________###_________________##__
-//___##_____________________###_________________##__
-//___##_____________________###_________________##__
-//___##_____________________###_________________##__
-//___##________________________________________##___
-//____##_____________##############____________##___
-//____###______#########################______##____
-//_____###_____###___________________####____###____
-//______###____##########################___###_____
-//_______###________################_______###______
-//_________###___________________________###________
-//__________####______________________#####_________
-//____________######_______________######___________
-//_______________#####################______________
-//____________________###########___________________
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using BonerRun.Core;
 namespace BonerRun
 {
+
     public class BonerGame : Microsoft.Xna.Framework.Game
     {
         GraphicsDeviceManager graphics;
-
-        GameManager gameManager;
+        protected GameManager gameManager;
 
         public BonerGame()
         {
@@ -48,9 +19,9 @@ namespace BonerRun
         protected override void Initialize()
         {
             this.IsMouseVisible = true;
-            graphics.PreferredBackBufferWidth = graphics.GraphicsDevice.DisplayMode.Width;
-            graphics.PreferredBackBufferHeight = graphics.GraphicsDevice.DisplayMode.Height;
-            graphics.IsFullScreen = false;
+            graphics.PreferredBackBufferWidth = 1280;
+            graphics.PreferredBackBufferHeight = 1024;
+            graphics.IsFullScreen = true;
 
             graphics.ApplyChanges();
 
@@ -64,6 +35,7 @@ namespace BonerRun
             gameManager.Initialize();
         }
 
+
         protected override void UnloadContent()
         {
 
@@ -71,6 +43,7 @@ namespace BonerRun
 
         protected override void Update(GameTime gameTime)
         {
+            // Allows the game to exit
             if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
                 this.Exit();
 
@@ -78,6 +51,7 @@ namespace BonerRun
 
             base.Update(gameTime);
         }
+
 
         protected override void Draw(GameTime gameTime)
         {
@@ -87,5 +61,8 @@ namespace BonerRun
 
             base.Draw(gameTime);
         }
+
+
+
     }
 }

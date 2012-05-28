@@ -104,6 +104,11 @@ namespace BonerRun.Input
         }
 
 
+        public void registerHandler( InputHandler handler)
+        {
+            this.handels.Add(handler.name, handler);
+        }
+
         public void registerHandler(string name, InputHandler handler)
         {
             this.handels.Add(name, handler);

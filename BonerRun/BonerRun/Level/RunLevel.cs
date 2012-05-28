@@ -42,14 +42,15 @@ namespace BonerRun.Level
             RenderGroup group = new RenderGroup("levelScenery");
 
             level.name = (string)FileLoader.Load(string.Empty);
-            level.background = new RenderImage(renderCore, null, group, 0, true, new Vector2(-renderCore.settings.screensize.X/2,-renderCore.settings.screensize.Y/2));
+            level.background = new RenderImage(renderCore, null, group, 0);
+            level.background.camAffected = true;
             level.background.image = (Texture2D)FileLoader.Load(new Texture2D(renderCore.graphicsDevice,1,1));
 
             renderCore.objects.Add(level.background);
 
 
             level.obstacles = new List<IObstacle>();
-            List<Obstacle> list = (List<Obstacle>)FileLoader.loadList<Obstacle>();
+            List<Obstacle> list = FileLoader.loadList<Obstacle>();
 
             foreach (Obstacle obstacle in list)
             {
@@ -58,8 +59,11 @@ namespace BonerRun.Level
             RenderGroup obstacleGroup = new RenderGroup("Obstacles");
 
             foreach(IObstacle obstacle in level.obstacles)
-            {
+            {         
                 obstacle.parent = renderCore;
+                obstacle.position = new Vector2(obstacle.position.X, obstacle.position.Y + renderCore.settings.screensize.Y - obstacle.getcurrentAnimation().size.Y);
+                Vector2 scale = new Vector2(renderCore.settings.screensize.X / renderCore.settings.standardsize.X, renderCore.settings.screensize.Y / renderCore.settings.standardsize.Y);
+                obstacle.position = new Vector2(obstacle.position.X * scale.X, obstacle.position.Y * scale.Y);
                 obstacle.layer = 1;
                 obstacleGroup.objects.Add(obstacle);
             }
@@ -68,7 +72,6 @@ namespace BonerRun.Level
 
             return level;
         }
-
 
     }
 }

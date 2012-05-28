@@ -50,6 +50,12 @@ namespace BonerRun.Core
             set;
         }
 
+        public Player player
+        {
+            get;
+            set;
+        }
+
 		public GameManager(BonerGame game)
 		{
             this.game = game;
@@ -68,6 +74,9 @@ namespace BonerRun.Core
             renderCore.settings.standardsize = new Vector2(1280, 1024);
             renderCore.settings.standardFont = game.Content.Load<SpriteFont>("Fonts/standardFont");
 
+
+            player = new Player(this);
+
             gameStates = new List<GameState>();
             //setGameState(new GameStatePressStart(this),true,false);
             setGameState(new GameStateOnTheRun(this), true, false);
@@ -75,6 +84,7 @@ namespace BonerRun.Core
 
 		public void Update()
 		{
+            inputManager.Update();
             gameStates[0].Update();
 		}
 

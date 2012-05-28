@@ -82,7 +82,7 @@ namespace BonerRun.Content
 
 
 
-        public static object loadList<T>()
+        public static List<T> loadList<T>()
         {
             List<T> list = new List<T>();
 
